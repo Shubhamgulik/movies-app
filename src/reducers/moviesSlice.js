@@ -10,15 +10,16 @@ const moviesSlice = createSlice({
   initialState,
   reducers: {
     addMovies: (state, action) => {
-      console.log("Payload: ", action.payload);
+      //   console.log("Payload: ", action.payload);
       state.moviesList = action.payload;
     },
     addToFavourite: (state, action) => {
+      //   console.log("Payload: ", action.payload.Title);
       state.moviesList.map((movie) => {
-        if (movie.imdbID === action.payload) {
+        if (movie.imdbID === action.payload.imdbID) {
           console.log("In reducer: ", movie.imdbID);
 
-          state.favourites.push(movie);
+          state.favourites = [movie, ...state.favourites];
         }
       });
     },
